@@ -1,9 +1,11 @@
 //https://disneyapi.dev/docs
 //DATA IS ALPHABETICAL
-document.getElementById("").addEventListener("click", function(event) {
+document.getElementById("userInput").addEventListener("submit", function(event) {
   event.preventDefault();
   let character = document.getElementById("characterField").value;
+  let results = document.getElementById("characterData");
   results.appendChild(document.createTextNode(character));
+};
   /*
   let selected = document.getElementById("selector");
 
