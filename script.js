@@ -2,9 +2,16 @@
 //DATA IS ALPHABETICAL
 document.getElementById("userInput").addEventListener("submit", function(event) {
   event.preventDefault();
-  let character = document.getElementById("characterField").value;
+  /*let character = document.getElementById("characterField").value;
   let results = document.getElementById("characterData");
-  results.appendChild(document.createTextNode(character));
+  results.appendChild(document.createTextNode(character));*/
+  let url = "static.txt";
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json);
+    });
 };
   /*
   let selected = document.getElementById("selector");

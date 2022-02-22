@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <title>Disney Characters</title>
@@ -11,11 +10,6 @@
     <legend>Enter a number to learn about a Disney character:</legend>
     <br/>
     <input id="characterField" type="text" name="" value="">
-    <select id="selector">
-      <option value="films">Films</option>
-      <option value="shortFilms">Short Films</option>
-      <option value="tvShows">TV Shows</option>
-    </select>
     <input type="submit" value="Search">
   </form>
 
@@ -26,8 +20,58 @@
     <p><a href="https://github.com/revloc063/walt.git">GitHub Repository</a></p>
   </div>
 
-  <script text="type/javascript" src="script.js">
-  </script>
+<script>
+document.getElementById("userInput").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const number = document.getElementById("characterField").value;
+  const url = "https://api.disneyapi.dev/characters/" + number;
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      const data = document.getElementById("characterData");
+
+      data.appendChild(document.createTextNode("Name: " + json.name));
+      data.appendChild(document.createElement("br"));
+
+      let filmData = "";
+      console.log(json.films.length);
+      filmData += "Films: ";
+      for (let i = 0; i < json.films.length; i++) {
+        filmData += json.films[i];
+        if (i !== json.films.length - 1) {
+          filmData += ", ";
+        }
+      }
+      data.appendChild(document.createTextNode(filmData));
+      data.appendChild(document.createElement("br"));
+
+      let shortFilmData = "";
+      console.log(json.shortFilms.length);
+      shortFilmData += "Short Films: ";
+      for (let i = 0; i < json.shortFilms.length; i++) {
+        shortFilmData += json.shortFilms[i];
+        if (i !== json.shortFilms.length - 1) {
+          shortFilmData += ", ";
+        }
+      }
+      data.appendChild(document.createTextNode(shortFilmData));
+      data.appendChild(document.createElement("br"));
+
+      let tvData = "";
+      console.log(json.tvShows.length);
+      tvData += "TV Shows: ";
+      for (let i = 0; i < json.tvShows.length; i++) {
+        tvData += json.tvShows[i];
+        if (i !== json.tvShows.length - 1) {
+          tvData += ", ";
+        }
+      }
+      data.appendChild(document.createTextNode(tvData));
+
+    });
+});
+</script>
 
 </body>
 </html>
