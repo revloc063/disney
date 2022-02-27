@@ -3,6 +3,7 @@
 <head>
   <title>Disney Characters</title>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
   <h1>Creative Project #2</h1>
@@ -35,36 +36,51 @@ document.getElementById("userInput").addEventListener("submit", function(event) 
       data.appendChild(document.createElement("br"));
 
       let filmData = "";
-      console.log(json.films.length);
+      //console.log(json.films.length);
       filmData += "Films: ";
-      for (let i = 0; i < json.films.length; i++) {
-        filmData += json.films[i];
-        if (i !== json.films.length - 1) {
-          filmData += ", ";
+      if (json.films.length == 0) {
+        filmData += "None";
+      }
+      else {
+        for (let i = 0; i < json.films.length; i++) {
+          filmData += json.films[i];
+          if (i !== json.films.length - 1) {
+            filmData += ", ";
+          }
         }
       }
       data.appendChild(document.createTextNode(filmData));
       data.appendChild(document.createElement("br"));
 
       let shortFilmData = "";
-      console.log(json.shortFilms.length);
+      //console.log(json.shortFilms.length);
       shortFilmData += "Short Films: ";
-      for (let i = 0; i < json.shortFilms.length; i++) {
-        shortFilmData += json.shortFilms[i];
-        if (i !== json.shortFilms.length - 1) {
-          shortFilmData += ", ";
+      if (json.shortFilms.length == 0) {
+        shortFilmData += "None";
+      }
+      else {
+        for (let i = 0; i < json.shortFilms.length; i++) {
+          shortFilmData += json.shortFilms[i];
+          if (i !== json.shortFilms.length - 1) {
+            shortFilmData += ", ";
+          }
         }
       }
       data.appendChild(document.createTextNode(shortFilmData));
       data.appendChild(document.createElement("br"));
 
       let tvData = "";
-      console.log(json.tvShows.length);
+      //console.log(json.tvShows.length);
       tvData += "TV Shows: ";
-      for (let i = 0; i < json.tvShows.length; i++) {
-        tvData += json.tvShows[i];
-        if (i !== json.tvShows.length - 1) {
-          tvData += ", ";
+      if (json.tvShows.length == 0) {
+        tvData += "None";
+      }
+      else {
+        for (let i = 0; i < json.tvShows.length; i++) {
+          tvData += json.tvShows[i];
+          if (i !== json.tvShows.length - 1) {
+            tvData += ", ";
+          }
         }
       }
       data.appendChild(document.createTextNode(tvData));
